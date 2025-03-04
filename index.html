@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geodetická Kalkulačka</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+            transition: border 0.3s;
+        }
+        input:focus {
+            border-color: #2c3e50;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-top: 15px;
+            color: #d35400;
+        }
+        .instructions {
+            text-align: left;
+            margin-top: 20px;
+            padding: 20px;
+            background: #ecf0f1;
+            border-radius: 5px;
+            font-size: 16px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Geodetická Kalkulačka</h1>
+    <p>Speciální kalkulačka pro výpočty souřadnic a vzdáleností</p>
+    
+    <div class="container">
+        <h2>Výpočet vzdálenosti mezi souřadnicemi</h2>
+        <label>Šířka bodu A: <input type="number" id="lat1" step="any"></label><br>
+        <label>Délka bodu A: <input type="number" id="lon1" step="any"></label><br>
+        <label>Šířka bodu B: <input type="number" id="lat2" step="any"></label><br>
+        <label>Délka bodu B: <input type="number" id="lon2" step="any"></label><br>
+        <button onclick="calculateDistance()">Spočítat vzdálenost</button>
+        <h3 class="result">Výsledek: <span id="result">-</span> km</h3>
+    </div>
+    
+    <div class="container instructions">
+        <h2>Návod k použití</h2>
+        <p>1. Zadejte zeměpisnou šířku a délku bodu A.</p>
+        <p>2. Zadejte zeměpisnou šířku a délku bodu B.</p>
+        <p>3. Klikněte na tlačítko "Spočítat vzdálenost".</p>
+        <p>4. Výsledek se zobrazí ve formátu kilometrů.</p>
+    </div>
+    
+    <script>
+        function toRadians(degrees) {
+            return degrees * (Math.PI / 180);
+        }
+        
+        function calculateDistance() {
+            let lat1 = parseFloat(document.getElementById('lat1').value);
+            let lon1 = parseFloat(document.getElementById('lon1').value);
+            let lat2 = parseFloat(document.getElementById('lat2').value);
+            let lon2 = parseFloat(document.getElementById('lon2').value);
+            
+            let R = 6371; // Poloměr Země v km
+            let dLat = toRadians(lat2 - lat1);
+            let dLon = toRadians(lon2 - lon1);
+            let a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + 
+                    Math.cos(toRadians(lat1)) * Math.cos(toRadians(lat2)) * 
+                    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            let distance = R * c;
+            
+            document.getElementById('result').innerText = distance.toFixed(2);
+        }
+    </script>
+</body>
+</html>
