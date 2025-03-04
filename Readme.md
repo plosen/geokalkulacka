@@ -25,8 +25,6 @@ Tato webová aplikace umožňuje provádět základní geodetické výpočty, ze
    ```
 2. Otevřete `index.html` v libovolném webovém prohlížeči.
 
-## Náhled
-![Náhled aplikace](screenshot.png)
 
 ## Autor
 [Vase Jmeno](https://github.com/plosen)
