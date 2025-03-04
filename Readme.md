@@ -21,7 +21,7 @@ Tato webová aplikace umožňuje provádět základní geodetické výpočty, ze
 ## Instalace
 1. Naklonujte si repozitář:
    ```sh
-   git clone https://github.com/tvoje-repozitar/geodeticka-kalkulacka.git
+   git clone https://github.com/plosen/geokalkulacka/
    ```
 2. Otevřete `index.html` v libovolném webovém prohlížeči.
 
