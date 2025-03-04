@@ -27,7 +27,7 @@ Tato webová aplikace umožňuje provádět základní geodetické výpočty, ze
 
 
 ## Autor
-[Vase Jmeno](https://github.com/plosen)
+[Kirill Danilov](https://github.com/plosen)
 
 ## Licence
 Tento projekt je dostupný pod licencí MIT.
